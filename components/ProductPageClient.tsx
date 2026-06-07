@@ -58,26 +58,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
                     </Link>
 
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 32, flexWrap: 'wrap' }}>
-                        {/* Emoji icon */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.7 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5 }}
-                            style={{
-                                width: 96,
-                                height: 96,
-                                borderRadius: 24,
-                                background: `${color}15`,
-                                border: `1px solid ${color}30`,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                fontSize: '3rem',
-                                flexShrink: 0,
-                            }}
-                        >
-                            {product.emoji}
-                        </motion.div>
+                        {/* Removed Emoji Icon Block */}
 
                         <div>
                             {/* Category */}

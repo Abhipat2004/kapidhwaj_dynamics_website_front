@@ -65,7 +65,7 @@ export default function LogoIntro() {
                                 phase === 'fly' 
                                     ? { 
                                         opacity: 0, 
-                                        scale: 0.15, // 280 * 0.15 = 42
+                                        scale: 0.23, // 280 * 0.23 ≈ 64
                                         y: targetPos.y, 
                                         x: targetPos.x, 
                                       } 

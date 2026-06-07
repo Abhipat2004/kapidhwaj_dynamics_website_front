@@ -50,16 +50,16 @@ export default function Navbar() {
                     height: 72,
                 }}>
                     {/* Logo */}
-                    <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
+                    <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
                         <Image
                             src="/kd-logo.png"
                             alt="KapiDhwaj Dynamics"
-                            width={44}
-                            height={44}
+                            width={64}
+                            height={64}
                             style={{ objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(200,168,75,0.5))' }}
                             priority
                         />
-                        <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.1rem', color: '#F0F4FF', letterSpacing: '-0.01em' }}>
+                        <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.25rem', color: '#F0F4FF', letterSpacing: '-0.01em' }}>
                             KapiDhwaj<span style={{ color: '#C8A84B' }}> Dynamics</span>
                         </span>
                     </a>

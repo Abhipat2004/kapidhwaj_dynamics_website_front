@@ -119,14 +119,7 @@ export default function ProductsSection() {
                                             )}
                                         </div>
 
-                                        {/* Emoji icon */}
-                                        <div style={{
-                                            fontSize: '2.4rem',
-                                            marginBottom: 16,
-                                            lineHeight: 1,
-                                        }}>
-                                            {product.emoji}
-                                        </div>
+                                        {/* Removed Emoji Icon Block */}
 
                                         {/* Name & Tagline */}
                                         <h3 style={{
