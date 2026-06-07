@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import LogoIntro from '@/components/LogoIntro';
+import GlobalBackground from '@/components/GlobalBackground';
 
 export const metadata: Metadata = {
   title: 'KapiDhwaj Dynamics — Next-Gen Drone Detection Systems',
@@ -18,9 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <GlobalBackground />
         <LogoIntro />
         <Navbar />
-        <main>{children}</main>
+        <main style={{ position: 'relative', zIndex: 1 }}>{children}</main>
         <Footer />
       </body>
     </html>

@@ -1,14 +1,18 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronDown, Shield, Cpu, Radio } from 'lucide-react';
+import Image from 'next/image';
+
+const HeroScene3D = dynamic(() => import('./HeroScene3D'), { ssr: false });
 
 const fadeUp = (delay = 0) => ({
     hidden: { opacity: 0, y: 40 },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay },
+        transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1], delay },
     },
 });
 
@@ -19,6 +23,13 @@ const categoryBadges = [
 ];
 
 export default function HeroSection() {
+    const { scrollY } = useScroll();
+    
+    // Watermark fades out as you scroll down
+    const watermarkOpacity = useTransform(scrollY, [0, 300], [0.06, 0]);
+    // 3D scene fades in as you scroll down
+    const sceneOpacity = useTransform(scrollY, [0, 300], [0, 1]);
+
     return (
         <section
             id="hero"
@@ -31,45 +42,63 @@ export default function HeroSection() {
                 position: 'relative',
                 overflow: 'hidden',
                 paddingTop: 80,
+                background: '#03040a',
             }}
         >
-            {/* Animated mesh background */}
-            <div className="mesh-bg" />
+            {/* ── Watermark Logo ── */}
+            <motion.div style={{
+                position: 'absolute',
+                inset: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 0,
+                pointerEvents: 'none',
+                opacity: watermarkOpacity,
+            }}>
+                <Image
+                    src="/kd-logo.png"
+                    alt=""
+                    width={700}
+                    height={700}
+                    style={{
+                        objectFit: 'contain',
+                        filter: 'grayscale(1) brightness(3)',
+                        userSelect: 'none',
+                    }}
+                    priority
+                />
+            </motion.div>
 
-            {/* Grid lines */}
+            {/* ── 3D Canvas Background ── */}
+            <motion.div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: sceneOpacity }}>
+                <HeroScene3D />
+            </motion.div>
+
+            {/* ── Vignette overlay to blend 3D into content ── */}
             <div style={{
                 position: 'absolute',
                 inset: 0,
-                backgroundImage: `
-          linear-gradient(rgba(200,168,75,0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(200,168,75,0.04) 1px, transparent 1px)
-        `,
-                backgroundSize: '60px 60px',
-                maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)',
+                zIndex: 1,
+                background: 'radial-gradient(ellipse 70% 60% at 50% 50%, transparent 0%, rgba(3,4,10,0.55) 70%, rgba(3,4,10,0.92) 100%)',
+                pointerEvents: 'none',
             }} />
 
-            {/* Pulsing radar rings */}
-            {[500, 700, 900].map((size, i) => (
-                <motion.div
-                    key={size}
-                    animate={{ scale: [1, 1.4, 1], opacity: [0.25, 0, 0.25] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'easeOut', delay: i * 1.2 }}
-                    style={{
-                        position: 'absolute',
-                        width: size,
-                        height: size,
-                        borderRadius: '50%',
-                        border: `1px solid rgba(200, 168, 75, ${0.18 - i * 0.04})`,
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        pointerEvents: 'none',
-                    }}
-                />
-            ))}
+            {/* ── Bottom fade ── */}
+            <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: 220,
+                zIndex: 2,
+                background: 'linear-gradient(to bottom, transparent, #03040a)',
+                pointerEvents: 'none',
+            }} />
 
-            <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
+            {/* ── Text Content ── */}
+            <div className="container" style={{ position: 'relative', zIndex: 3, textAlign: 'center' }}>
+
                 {/* Top badge */}
                 <motion.div variants={fadeUp(0)} initial="hidden" animate="visible"
                     style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
@@ -79,13 +108,13 @@ export default function HeroSection() {
                             display: 'inline-block', boxShadow: '0 0 8px #C8A84B',
                             animation: 'pulse 2s ease-in-out infinite',
                         }} />
-                        Defence & Robotics Technology
+                        Defence &amp; Robotics Technology
                     </div>
                 </motion.div>
 
                 {/* Headline */}
                 <motion.h1
-                    variants={fadeUp(0.1)}
+                    variants={fadeUp(0.15)}
                     initial="hidden"
                     animate="visible"
                     style={{
@@ -95,9 +124,9 @@ export default function HeroSection() {
                         lineHeight: 1.05,
                         letterSpacing: '-0.02em',
                         color: '#F0F4FF',
-                        marginBottom: 24,
-                        maxWidth: 920,
                         margin: '0 auto 24px',
+                        maxWidth: 920,
+                        textShadow: '0 0 60px rgba(200,168,75,0.2)',
                     }}
                 >
                     Serving those{' '}
@@ -107,34 +136,37 @@ export default function HeroSection() {
 
                 {/* Sub-headline */}
                 <motion.p
-                    variants={fadeUp(0.2)}
+                    variants={fadeUp(0.25)}
                     initial="hidden"
                     animate="visible"
                     style={{
-                        fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
+                        fontSize: 'clamp(1rem, 2.5vw, 1.15rem)',
                         color: '#8892A4',
-                        maxWidth: 640,
+                        maxWidth: 600,
                         margin: '0 auto 40px',
                         lineHeight: 1.8,
                     }}
                 >
-                    KapiDhwaj Dynamics is a next-generation defence technology startup. We build AI-powered drone detection systems, semi-autonomous turret platforms, and precision smart ammunition — engineered for the modern battlefield.
+                    KapiDhwaj Dynamics is a next-generation defence technology startup. We build
+                    AI-powered drone detection systems, semi-autonomous turret platforms, and
+                    precision smart ammunition — engineered for the modern battlefield.
                 </motion.p>
 
                 {/* Category Badges */}
                 <motion.div
-                    variants={fadeUp(0.25)}
+                    variants={fadeUp(0.3)}
                     initial="hidden"
                     animate="visible"
-                    style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 40 }}
+                    style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 44 }}
                 >
                     {categoryBadges.map(b => (
                         <div key={b.label} style={{
                             display: 'flex', alignItems: 'center', gap: 7,
-                            background: 'rgba(255,255,255,0.05)',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            borderRadius: 50, padding: '7px 16px',
-                            fontSize: '0.8rem', fontWeight: 500, color: '#CBD5E0',
+                            background: 'rgba(200,168,75,0.06)',
+                            border: '1px solid rgba(200,168,75,0.2)',
+                            borderRadius: 50, padding: '8px 18px',
+                            fontSize: '0.8rem', fontWeight: 600, color: '#CBD5E0',
+                            backdropFilter: 'blur(10px)',
                         }}>
                             <span style={{ color: '#C8A84B' }}>{b.icon}</span>
                             {b.label}
@@ -144,7 +176,7 @@ export default function HeroSection() {
 
                 {/* CTAs */}
                 <motion.div
-                    variants={fadeUp(0.3)}
+                    variants={fadeUp(0.38)}
                     initial="hidden"
                     animate="visible"
                     style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}
@@ -158,12 +190,12 @@ export default function HeroSection() {
                     </a>
                 </motion.div>
 
-                {/* Floating stats row */}
+                {/* Stats row */}
                 <motion.div
-                    variants={fadeUp(0.5)}
+                    variants={fadeUp(0.52)}
                     initial="hidden"
                     animate="visible"
-                    style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 80, flexWrap: 'wrap' }}
+                    style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 80, flexWrap: 'wrap' }}
                 >
                     {[
                         { value: '4', label: 'Defence Products' },
@@ -171,10 +203,15 @@ export default function HeroSection() {
                         { value: '99.4%', label: 'AI Accuracy' },
                         { value: '24/7', label: 'Autonomous Ops' },
                     ].map((stat) => (
-                        <div key={stat.value} className="glass" style={{ padding: '16px 28px', borderRadius: 12, textAlign: 'center', minWidth: 120 }}>
+                        <div key={stat.value} className="glass" style={{
+                            padding: '16px 28px', borderRadius: 12, textAlign: 'center', minWidth: 120,
+                            backdropFilter: 'blur(20px)',
+                            background: 'rgba(200,168,75,0.05)',
+                            border: '1px solid rgba(200,168,75,0.15)',
+                        }}>
                             <div style={{
                                 fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.5rem',
-                                background: 'linear-gradient(135deg, #C8A84B, #8B6914)',
+                                background: 'linear-gradient(135deg, #E8C96A, #C8A84B)',
                                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
                             }}>{stat.value}</div>
                             <div style={{ fontSize: '0.78rem', color: '#8892A4', marginTop: 4 }}>{stat.label}</div>
@@ -187,7 +224,11 @@ export default function HeroSection() {
             <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                style={{ position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)', color: '#4A5568', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}
+                style={{
+                    position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)',
+                    color: '#4A5568', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
+                    zIndex: 4,
+                }}
             >
                 <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Scroll</span>
                 <ChevronDown size={16} />
