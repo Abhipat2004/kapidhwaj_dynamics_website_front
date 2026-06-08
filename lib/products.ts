@@ -26,7 +26,7 @@ export const products: Product[] = [
         longDescription:
             'KD Sentinel is our flagship drone detection platform, engineered with a multi-layer sensor fusion architecture that combines passive RF spectrum analysis, acoustic detection, and computer vision. Powered by our proprietary NexaCore AI, it achieves class-leading detection accuracy with near-zero false positives — detecting threats in as little as 30 ms. The system operates fully air-gapped — all AI inference runs on an onboard hardened NPU — making it ideal for classified military installations, airports, and critical national infrastructure. Our AI model is trained on a dataset of over 50 lakh (5 million) images across 5,000+ UAV and drone models, providing unmatched classification depth.',
         color: '#C8A84B',
-        gradient: 'linear-gradient(135deg, rgba(200,168,75,0.14), rgba(200,168,75,0.02))',
+        gradient: 'linear-gradient(135deg, #1f1a0a, #0a0802)',
         glowColor: 'rgba(200, 168, 75, 0.35)',
         emoji: '🛡️',
         specs: [
@@ -62,7 +62,7 @@ export const products: Product[] = [
         longDescription:
             'KD Eagle Eye is a military-grade ground-based turret platform that redefines the speed of air defence. Its onboard AI autonomously handles every phase of the engagement — detection in 30 ms, target lock in 100 ms, and threat elimination in approximately 3 seconds — leaving only the final firing decision to a human operator. With a 5 km detection and firing range, it accepts exclusively KD-manufactured smart ammunition, ensuring optimal ballistic and guidance compatibility. Running on AC, DC, or solar power, Eagle Eye is designed for fixed military installations and forward operating bases with no dependence on external power infrastructure.',
         color: '#EF4444',
-        gradient: 'linear-gradient(135deg, rgba(239,68,68,0.14), rgba(239,68,68,0.02))',
+        gradient: 'linear-gradient(135deg, #240a0a, #0a0303)',
         glowColor: 'rgba(239, 68, 68, 0.35)',
         emoji: '🎯',
         specs: [
@@ -100,7 +100,7 @@ export const products: Product[] = [
         longDescription:
             'The KD Prox-50 is a self-powered .50 BMG (12.7×99mm) proximity-fuzed smart round developed exclusively for military deployment in the KD Eagle Eye turret system. Its onboard MEMS proximity sensor autonomously detects the target UAV within a programmable lethal radius and triggers airburst fragmentation — eliminating fast-moving and evasive drones that standard ball ammunition cannot reliably hit. Self-contained and self-powered, the round requires no external guidance or weapon modification. It is engineered exclusively for KD systems, ensuring optimal fuze timing, fragmentation pattern, and ballistic compatibility.',
         color: '#F59E0B',
-        gradient: 'linear-gradient(135deg, rgba(245,158,11,0.14), rgba(245,158,11,0.02))',
+        gradient: 'linear-gradient(135deg, #261701, #0a0600)',
         glowColor: 'rgba(245, 158, 11, 0.35)',
         emoji: '💥',
         specs: [
@@ -136,7 +136,7 @@ export const products: Product[] = [
         longDescription:
             'KD Viper is a military-grade 170×67mm self-powered guided munition that brings aircraft-class precision to ground-level launchers. It employs a dual laser guidance architecture: a semi-active laser homing seeker that locks onto the laser spot on target, combined with laser beam riding that keeps the round flying precisely along the designator beam — providing redundant guidance for maximum hit probability even against fast-moving or aggressively manoeuvring UAVs. Self-powered from launch through impact, it requires no external power link from the firing platform. Like the KD Prox-50, the Viper is engineered exclusively for the KD Eagle Eye turret system, ensuring full ballistic and guidance integration. Built for military use only.',
         color: '#10B981',
-        gradient: 'linear-gradient(135deg, rgba(16,185,129,0.14), rgba(16,185,129,0.02))',
+        gradient: 'linear-gradient(135deg, #021c13, #000805)',
         glowColor: 'rgba(16, 185, 129, 0.35)',
         emoji: '🚀',
         specs: [

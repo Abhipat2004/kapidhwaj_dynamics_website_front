@@ -70,10 +70,8 @@ export default function HeroSection() {
                 />
             </motion.div>
 
-            {/* ── 3D Canvas Background ── */}
-            <motion.div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: sceneOpacity }}>
-                <HeroScene3D />
-            </motion.div>
+            {/* ── 3D Canvas Background (Moved to GlobalBackground) ── */}
+            {/* The global BgCanvas now renders the Radar system site-wide */}
 
             {/* ── Vignette overlay to blend 3D into content ── */}
             <div style={{

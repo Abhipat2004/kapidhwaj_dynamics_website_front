@@ -16,7 +16,7 @@ export default function ContactSection() {
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     style={{
-                        background: 'linear-gradient(135deg, rgba(200,168,75,0.07) 0%, rgba(0,0,0,0) 50%, rgba(139,105,20,0.08) 100%)',
+                        background: 'linear-gradient(135deg, #1f1a0a 0%, #0a0802 100%)',
                         border: '1px solid rgba(255,255,255,0.08)',
                         borderRadius: 28,
                         padding: 'clamp(48px, 8vw, 80px)',

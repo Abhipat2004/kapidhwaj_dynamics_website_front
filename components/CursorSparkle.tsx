@@ -10,6 +10,7 @@ interface Particle {
     speedY: number;
     life: number;
     maxLife: number;
+    colorBase: string;
 }
 
 export default function CursorSparkle() {
@@ -45,6 +46,11 @@ export default function CursorSparkle() {
                 const count = Math.min(Math.floor(dist / 5) + 1, 4);
                 
                 for (let i = 0; i < count; i++) {
+                    // 50% chance for gold, 50% chance for blue
+                    const isGold = Math.random() > 0.5;
+                    // '251, 191, 36' is a rich gold, '64, 206, 220' is cyan/blue
+                    const colorStr = isGold ? '251, 191, 36' : '64, 206, 220';
+
                     particles.current.push({
                         x: e.clientX,
                         y: e.clientY,
@@ -53,6 +59,7 @@ export default function CursorSparkle() {
                         speedY: (Math.random() - 0.5) * 1.5 - 0.5, // slight upward drift
                         life: 0,
                         maxLife: Math.random() * 30 + 20, // 20 to 50 frames
+                        colorBase: colorStr,
                     });
                 }
                 lastX = e.clientX;
@@ -83,9 +90,9 @@ export default function CursorSparkle() {
 
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(64, 206, 220, ${opacity})`;
+                ctx.fillStyle = `rgba(${p.colorBase}, ${opacity})`;
                 ctx.shadowBlur = 6;
-                ctx.shadowColor = '#40cedc';
+                ctx.shadowColor = `rgb(${p.colorBase})`;
                 ctx.fill();
             }
 

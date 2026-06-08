@@ -18,7 +18,7 @@ const socials = [
 
 export default function Footer() {
     return (
-        <footer style={{ background: '#03040a', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '64px 0 32px' }}>
+        <footer style={{ background: '#03040a', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '64px 0 32px', position: 'relative', zIndex: 1 }}>
             <div className="container">
                 <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 56 }} className="footer-grid">
 
