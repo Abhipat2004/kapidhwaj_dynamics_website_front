@@ -72,7 +72,7 @@ export default function TechSection() {
                             initial={{ opacity: 0, y: 50 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.65, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                            whileHover={{ y: 0, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}
+                            whileHover={{ y: -6, boxShadow: '0 16px 32px rgba(0,0,0,0.06)' }}
                             style={{
                                 padding: '36px 28px',
                                 borderRadius: 4,

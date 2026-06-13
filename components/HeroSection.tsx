@@ -171,7 +171,9 @@ export default function HeroSection() {
                         { value: '99.4%', label: 'AI Accuracy' },
                         { value: '24/7', label: 'Autonomous Ops' },
                     ].map((stat) => (
-                        <div key={stat.value} style={{
+                        <motion.div key={stat.value} 
+                            whileHover={{ y: -4, boxShadow: '0 12px 24px rgba(0,0,0,0.04)' }}
+                            style={{
                             padding: '16px 28px', borderRadius: 4, textAlign: 'center', minWidth: 120,
                             background: 'var(--surface)',
                             border: '1px solid var(--border)',
@@ -181,7 +183,7 @@ export default function HeroSection() {
                                 color: 'var(--accent-blue)'
                             }}>{stat.value}</div>
                             <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 4 }}>{stat.label}</div>
-                        </div>
+                        </motion.div>
                     ))}
                 </motion.div>
             </div>
