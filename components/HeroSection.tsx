@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, ChevronDown, Shield, Cpu, Radio } from 'lucide-react';
+import { ArrowRight, ChevronDown, Scan, Target, Navigation } from 'lucide-react';
 import Image from 'next/image';
 
 
@@ -16,9 +16,9 @@ const fadeUp = (delay = 0) => ({
 });
 
 const categoryBadges = [
-    { icon: <Shield size={14} />, label: 'AI Drone Detection' },
-    { icon: <Cpu size={14} />, label: 'Autonomous Turret Systems' },
-    { icon: <Radio size={14} />, label: 'Smart Ammunition' },
+    { icon: <Scan size={14} />, label: 'AI Drone Detection' },
+    { icon: <Target size={14} />, label: 'Autonomous Turret Systems' },
+    { icon: <Navigation size={14} />, label: 'Smart Ammunition' },
 ];
 
 export default function HeroSection() {

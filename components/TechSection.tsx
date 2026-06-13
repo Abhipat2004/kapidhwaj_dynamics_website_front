@@ -2,32 +2,32 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Radio, Cpu, Brain, GitMerge } from 'lucide-react';
+import { Activity, Server, Crosshair, Network } from 'lucide-react';
 
 const pillars = [
     {
-        icon: <Radio size={32} />,
+        icon: <Activity size={32} />,
         title: 'Sensor Fusion & Detection',
         description:
             'Our systems combine RF spectrum monitoring, passive radar, LiDAR, EO/IR, and acoustic sensors — fused by AI to deliver high-confidence situational awareness in any environment.',
         color: 'var(--accent-blue)',
     },
     {
-        icon: <Cpu size={32} />,
+        icon: <Server size={32} />,
         title: 'Edge AI & On-Board Processing',
         description:
             'All intelligence runs on our hardened NexaCore NPU. Zero cloud dependency means your systems operate autonomously in signal-contested, air-gapped, or classified environments.',
         color: 'var(--accent-blue)',
     },
     {
-        icon: <Brain size={32} />,
+        icon: <Crosshair size={32} />,
         title: 'Automated Ammunition Navigation using Laser',
         description:
             'Our smart munitions use dual laser guidance — semi-active laser homing and laser beam riding — combined with micro-canard actuators to autonomously steer mid-flight and achieve sub-metre CEP against moving aerial targets.',
         color: 'var(--accent-blue)',
     },
     {
-        icon: <GitMerge size={32} />,
+        icon: <Network size={32} />,
         title: 'Integrated C2 & Open API',
         description:
             'Every KapiDhwaj Dynamics product is designed for seamless integration with existing military C2 and SCADA systems via open REST + WebSocket APIs — enabling full interoperability without vendor lock-in.',
