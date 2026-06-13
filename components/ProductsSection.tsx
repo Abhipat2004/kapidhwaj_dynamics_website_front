@@ -30,40 +30,26 @@ export default function ProductsSection() {
                     style={{ marginBottom: 64 }}
                 >
                     <div className="section-label">Our Product Portfolio</div>
-                    <h2 className="section-title">
+                    <h2 className="section-title" style={{ color: 'var(--text-primary)' }}>
                         Defence & Robotics Solutions{' '}
-                        <span className="gradient-text">Built for Impact</span>
+                        <span style={{ color: 'var(--accent-blue)' }}>Built for Impact</span>
                     </h2>
                     <motion.div 
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={inView ? { opacity: 1, scale: 1 } : {}}
-                        whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(200,168,75,0.2)' }}
                         transition={{ duration: 0.5 }}
                         style={{
-                            background: 'linear-gradient(135deg, #11141c 0%, #080c13 100%)',
-                            border: '1px solid rgba(200,168,75,0.4)', // KD Gold border
-                            borderRadius: 16,
-                            padding: '28px 36px',
+                            background: 'var(--surface)',
+                            border: '1px solid var(--border)',
+                            borderRadius: 4,
+                            padding: '24px 32px',
                             maxWidth: 750,
                             margin: '24px auto 0',
                             position: 'relative',
                             overflow: 'hidden',
-                            boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
                         }}
                     >
-                        {/* Animated Glow Orbs */}
-                        <motion.div 
-                            animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.3, 1] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            style={{ position: 'absolute', top: -30, left: -30, width: 120, height: 120, background: '#C8A84B', filter: 'blur(50px)', borderRadius: '50%' }} 
-                        />
-                        <motion.div 
-                            animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.4, 1] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                            style={{ position: 'absolute', bottom: -30, right: -30, width: 150, height: 150, background: '#10B981', filter: 'blur(60px)', borderRadius: '50%' }} 
-                        />
-                        
-                        <p className="section-subtitle" style={{ margin: 0, maxWidth: '100%', position: 'relative', zIndex: 1, color: '#E2E8F0', fontWeight: 500 }}>
+                        <p className="section-subtitle" style={{ margin: 0, maxWidth: '100%', position: 'relative', zIndex: 1, color: 'var(--text-secondary)', fontWeight: 500 }}>
                             From AI-powered drone detection and semi-autonomous turret systems to proximity-fuzed
                             and laser-guided smart ammunition — each product purpose-built for real-world battlefield demands.
                         </p>
@@ -94,12 +80,12 @@ export default function ProductsSection() {
                             >
                                 <Link href={`/products/${product.slug}`} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
                                     <motion.div
-                                        whileHover={{ y: -8, scale: 1.015 }}
-                                        transition={{ duration: 0.25 }}
+                                        whileHover={{ boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}
+                                        transition={{ duration: 0.2 }}
                                         style={{
-                                            background: product.gradient,
-                                            border: `1px solid rgba(255,255,255,0.08)`,
-                                            borderRadius: 20,
+                                            background: 'var(--surface)',
+                                            border: `1px solid var(--border)`,
+                                            borderRadius: 4,
                                             padding: '32px 28px',
                                             height: '100%',
                                             cursor: 'pointer',
@@ -108,15 +94,13 @@ export default function ProductsSection() {
                                             boxSizing: 'border-box',
                                             display: 'flex',
                                             flexDirection: 'column',
-                                            transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
+                                            transition: 'border-color 0.2s ease',
                                         }}
                                         onMouseEnter={e => {
-                                            (e.currentTarget as HTMLElement).style.boxShadow = `0 20px 60px ${product.glowColor}`;
-                                            (e.currentTarget as HTMLElement).style.borderColor = accentColor + '50';
+                                            (e.currentTarget as HTMLElement).style.borderColor = 'var(--accent-blue)';
                                         }}
                                         onMouseLeave={e => {
-                                            (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-                                            (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
+                                            (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)';
                                         }}
                                     >
                                         {/* Category badge */}
@@ -153,10 +137,10 @@ export default function ProductsSection() {
 
                                         {/* Name & Tagline */}
                                         <h3 style={{
-                                            fontFamily: 'Outfit, sans-serif',
+                                            fontFamily: 'Inter, sans-serif',
                                             fontWeight: 800,
                                             fontSize: '1.4rem',
-                                            color: '#F0F4FF',
+                                            color: 'var(--text-primary)',
                                             marginBottom: 8,
                                         }}>
                                             {product.name}
@@ -164,7 +148,7 @@ export default function ProductsSection() {
                                         <p style={{
                                             fontSize: '0.78rem',
                                             fontWeight: 600,
-                                            color: accentColor,
+                                            color: 'var(--accent-blue)',
                                             letterSpacing: '0.04em',
                                             marginBottom: 14,
                                             textTransform: 'uppercase',
@@ -172,7 +156,7 @@ export default function ProductsSection() {
                                             {product.tagline}
                                         </p>
                                         <p style={{
-                                            color: '#8892A4',
+                                            color: 'var(--text-secondary)',
                                             lineHeight: 1.7,
                                             fontSize: '0.88rem',
                                             marginBottom: 24,
@@ -185,31 +169,30 @@ export default function ProductsSection() {
                                         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 20 }}>
                                             {product.specs.slice(0, 2).map(spec => (
                                                 <div key={spec.label} style={{
-                                                    background: 'rgba(255,255,255,0.05)',
-                                                    border: '1px solid rgba(255,255,255,0.08)',
-                                                    borderRadius: 8,
+                                                    background: 'var(--surface-hover)',
+                                                    border: '1px solid var(--border)',
+                                                    borderRadius: 4,
                                                     padding: '6px 12px',
                                                     fontSize: '0.75rem',
                                                 }}>
-                                                    <span style={{ color: '#4A5568' }}>{spec.label}: </span>
-                                                    <span style={{ color: '#CBD5E0', fontWeight: 600 }}>{spec.value}</span>
+                                                    <span style={{ color: 'var(--text-muted)' }}>{spec.label}: </span>
+                                                    <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{spec.value}</span>
                                                 </div>
                                             ))}
                                         </div>
 
-                                        {/* CTA row */}
                                         <div style={{
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'space-between',
                                             paddingTop: 16,
-                                            borderTop: '1px solid rgba(255,255,255,0.06)',
+                                            borderTop: '1px solid var(--border)',
                                         }}>
                                             <span style={{
-                                                color: accentColor,
+                                                color: 'var(--accent-blue)',
                                                 fontWeight: 700,
                                                 fontSize: '0.85rem',
-                                                fontFamily: 'Outfit, sans-serif',
+                                                fontFamily: 'Inter, sans-serif',
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 gap: 6,
@@ -221,23 +204,11 @@ export default function ProductsSection() {
                                                 width: 8,
                                                 height: 8,
                                                 borderRadius: '50%',
-                                                background: '#C8A84B',
+                                                background: 'var(--accent-blue)',
                                                 display: 'inline-block',
-                                                boxShadow: '0 0 6px #C8A84B',
                                             }} />
                                         </div>
 
-                                        {/* Corner glow dec */}
-                                        <div style={{
-                                            position: 'absolute',
-                                            top: -30,
-                                            right: -30,
-                                            width: 100,
-                                            height: 100,
-                                            borderRadius: '50%',
-                                            background: `radial-gradient(circle, ${accentColor}12, transparent 70%)`,
-                                            pointerEvents: 'none',
-                                        }} />
                                     </motion.div>
                                 </Link>
                             </motion.div>
@@ -249,38 +220,25 @@ export default function ProductsSection() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
-                    whileHover={{ scale: 1.02, boxShadow: '0 25px 50px rgba(239,68,68,0.15)' }}
                     transition={{ duration: 0.6, delay: 0.5 }}
                     style={{ 
                         textAlign: 'center', 
                         marginTop: 56,
-                        background: 'linear-gradient(135deg, #1a0a0a 0%, #080303 100%)',
-                        border: '1px solid rgba(239,68,68,0.4)', // Eagle Eye Red border
-                        borderRadius: 24,
+                        background: 'var(--surface)',
+                        border: '1px solid var(--border)',
+                        borderRadius: 4,
                         padding: '48px',
                         maxWidth: 650,
                         margin: '56px auto 0',
                         position: 'relative',
                         overflow: 'hidden',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center'
                     }}
                 >
-                    {/* Animated Glow Orbs */}
-                    <motion.div 
-                        animate={{ opacity: [0.3, 0.6, 0.3], x: [-20, 20, -20] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        style={{ position: 'absolute', top: '20%', left: '10%', width: 200, height: 200, background: '#EF4444', filter: 'blur(80px)', borderRadius: '50%', pointerEvents: 'none' }} 
-                    />
-                    <motion.div 
-                        animate={{ opacity: [0.2, 0.5, 0.2], x: [20, -20, 20] }}
-                        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        style={{ position: 'absolute', bottom: '10%', right: '10%', width: 250, height: 250, background: '#F59E0B', filter: 'blur(90px)', borderRadius: '50%', pointerEvents: 'none' }} 
-                    />
 
-                    <p style={{ color: '#F0F4FF', marginBottom: 24, fontSize: '1.15rem', fontWeight: 600, position: 'relative', zIndex: 1, letterSpacing: '0.02em' }}>
+                    <p style={{ color: 'var(--text-primary)', marginBottom: 24, fontSize: '1.15rem', fontWeight: 600, position: 'relative', zIndex: 1, letterSpacing: '0.02em' }}>
                         Need a custom or integrated solution?
                     </p>
                     <div style={{ position: 'relative', zIndex: 1 }}>

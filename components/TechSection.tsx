@@ -10,28 +10,28 @@ const pillars = [
         title: 'Sensor Fusion & Detection',
         description:
             'Our systems combine RF spectrum monitoring, passive radar, LiDAR, EO/IR, and acoustic sensors — fused by AI to deliver high-confidence situational awareness in any environment.',
-        color: '#C8A84B',
+        color: 'var(--accent-blue)',
     },
     {
         icon: <Cpu size={32} />,
         title: 'Edge AI & On-Board Processing',
         description:
             'All intelligence runs on our hardened NexaCore NPU. Zero cloud dependency means your systems operate autonomously in signal-contested, air-gapped, or classified environments.',
-        color: '#E8C96A',
+        color: 'var(--accent-blue)',
     },
     {
         icon: <Brain size={32} />,
         title: 'Automated Ammunition Navigation using Laser',
         description:
             'Our smart munitions use dual laser guidance — semi-active laser homing and laser beam riding — combined with micro-canard actuators to autonomously steer mid-flight and achieve sub-metre CEP against moving aerial targets.',
-        color: '#C8A84B',
+        color: 'var(--accent-blue)',
     },
     {
         icon: <GitMerge size={32} />,
         title: 'Integrated C2 & Open API',
         description:
             'Every KapiDhwaj Dynamics product is designed for seamless integration with existing military C2 and SCADA systems via open REST + WebSocket APIs — enabling full interoperability without vendor lock-in.',
-        color: '#8B6914',
+        color: 'var(--accent-blue)',
     },
 ];
 
@@ -40,7 +40,7 @@ export default function TechSection() {
     const inView = useInView(ref, { once: true, margin: '-80px' });
 
     return (
-        <section id="technology" className="section" style={{ background: 'var(--bg-2)' }}>
+        <section id="technology" className="section" style={{ background: 'transparent' }}>
             <div className="container">
                 <motion.div
                     ref={ref}
@@ -50,11 +50,11 @@ export default function TechSection() {
                     style={{ marginBottom: 72 }}
                 >
                     <div className="section-label">Core Technology</div>
-                    <h2 className="section-title" style={{ maxWidth: 580 }}>
+                    <h2 className="section-title" style={{ maxWidth: 580, color: 'var(--text-primary)' }}>
                         One Platform,{' '}
                         <span className="gradient-text">Infinite Mission Profiles</span>
                     </h2>
-                    <p className="section-subtitle">
+                    <p className="section-subtitle" style={{ color: 'var(--text-secondary)' }}>
                         Every KapiDhwaj Dynamics product is built on the same battle-tested technology stack —
                         enabling rapid deployment, seamless integration, and continuous AI model updates across
                         all product lines.
@@ -72,21 +72,21 @@ export default function TechSection() {
                             initial={{ opacity: 0, y: 50 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.65, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                            whileHover={{ y: -6 }}
+                            whileHover={{ y: 0, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}
                             style={{
                                 padding: '36px 28px',
-                                borderRadius: 20,
-                                background: 'rgba(255,255,255,0.03)',
-                                border: '1px solid rgba(255,255,255,0.07)',
-                                transition: 'border-color 0.3s',
+                                borderRadius: 4,
+                                background: 'var(--surface)',
+                                border: '1px solid var(--border)',
+                                transition: 'all 0.3s',
                                 position: 'relative',
                                 overflow: 'hidden',
                             }}
                             onMouseEnter={e => {
-                                (e.currentTarget as HTMLElement).style.borderColor = pillar.color + '50';
+                                (e.currentTarget as HTMLElement).style.borderColor = 'var(--accent-blue)';
                             }}
                             onMouseLeave={e => {
-                                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)';
+                                (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)';
                             }}
                         >
                             <div style={{
@@ -96,20 +96,20 @@ export default function TechSection() {
                                 borderRadius: '20px 20px 0 0',
                             }} />
                             <div style={{
-                                width: 60, height: 60, borderRadius: 16,
-                                background: `${pillar.color}15`, border: `1px solid ${pillar.color}30`,
+                                width: 60, height: 60, borderRadius: 4,
+                                background: 'var(--surface-hover)', border: '1px solid var(--border)',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                color: pillar.color, marginBottom: 24,
+                                color: 'var(--accent-navy)', marginBottom: 24,
                             }}>
                                 {pillar.icon}
                             </div>
                             <h3 style={{
-                                fontFamily: 'Outfit, sans-serif', fontWeight: 700,
-                                fontSize: '1.15rem', color: '#F0F4FF', marginBottom: 12,
+                                fontFamily: 'Inter, sans-serif', fontWeight: 700,
+                                fontSize: '1.15rem', color: 'var(--text-primary)', marginBottom: 12,
                             }}>
                                 {pillar.title}
                             </h3>
-                            <p style={{ color: '#8892A4', lineHeight: 1.75, fontSize: '0.88rem' }}>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.75, fontSize: '0.88rem' }}>
                                 {pillar.description}
                             </p>
                         </motion.div>

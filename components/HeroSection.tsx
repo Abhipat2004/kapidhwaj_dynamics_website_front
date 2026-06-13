@@ -42,7 +42,6 @@ export default function HeroSection() {
                 position: 'relative',
                 overflow: 'hidden',
                 paddingTop: 80,
-                background: '#03040a',
             }}
         >
             {/* ── Watermark Logo ── */}
@@ -71,28 +70,7 @@ export default function HeroSection() {
             </motion.div>
 
             {/* ── 3D Canvas Background (Moved to GlobalBackground) ── */}
-            {/* The global BgCanvas now renders the Radar system site-wide */}
-
-            {/* ── Vignette overlay to blend 3D into content ── */}
-            <div style={{
-                position: 'absolute',
-                inset: 0,
-                zIndex: 1,
-                background: 'radial-gradient(ellipse 70% 60% at 50% 50%, transparent 0%, rgba(3,4,10,0.55) 70%, rgba(3,4,10,0.92) 100%)',
-                pointerEvents: 'none',
-            }} />
-
-            {/* ── Bottom fade ── */}
-            <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: 220,
-                zIndex: 2,
-                background: 'linear-gradient(to bottom, transparent, #03040a)',
-                pointerEvents: 'none',
-            }} />
+            {/* The global background is now a clean, professional static slate gradient */}
 
             {/* ── Text Content ── */}
             <div className="container" style={{ position: 'relative', zIndex: 3, textAlign: 'center' }}>
@@ -101,11 +79,6 @@ export default function HeroSection() {
                 <motion.div variants={fadeUp(0)} initial="hidden" animate="visible"
                     style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
                     <div className="section-label">
-                        <span style={{
-                            width: 8, height: 8, borderRadius: '50%', background: '#C8A84B',
-                            display: 'inline-block', boxShadow: '0 0 8px #C8A84B',
-                            animation: 'pulse 2s ease-in-out infinite',
-                        }} />
                         Defence &amp; Robotics Technology
                     </div>
                 </motion.div>
@@ -116,20 +89,19 @@ export default function HeroSection() {
                     initial="hidden"
                     animate="visible"
                     style={{
-                        fontFamily: 'Outfit, sans-serif',
-                        fontSize: 'clamp(2.8rem, 7vw, 5.5rem)',
-                        fontWeight: 900,
+                        fontFamily: 'Inter, sans-serif',
+                        fontSize: 'clamp(2.8rem, 7vw, 5rem)',
+                        fontWeight: 800,
                         lineHeight: 1.05,
                         letterSpacing: '-0.02em',
-                        color: '#F0F4FF',
+                        color: 'var(--text-primary)',
                         margin: '0 auto 24px',
                         maxWidth: 920,
-                        textShadow: '0 0 60px rgba(200,168,75,0.2)',
                     }}
                 >
                     Serving those{' '}
                     <br />
-                    <span className="gradient-text-warm">who Serve</span>.
+                    <span style={{ color: 'var(--accent-navy)' }}>who Serve</span>.
                 </motion.h1>
 
                 {/* Sub-headline */}
@@ -139,7 +111,7 @@ export default function HeroSection() {
                     animate="visible"
                     style={{
                         fontSize: 'clamp(1rem, 2.5vw, 1.15rem)',
-                        color: '#8892A4',
+                        color: 'var(--text-secondary)',
                         maxWidth: 600,
                         margin: '0 auto 40px',
                         lineHeight: 1.8,
@@ -160,13 +132,12 @@ export default function HeroSection() {
                     {categoryBadges.map(b => (
                         <div key={b.label} style={{
                             display: 'flex', alignItems: 'center', gap: 7,
-                            background: 'rgba(200,168,75,0.06)',
-                            border: '1px solid rgba(200,168,75,0.2)',
-                            borderRadius: 50, padding: '8px 18px',
-                            fontSize: '0.8rem', fontWeight: 600, color: '#CBD5E0',
-                            backdropFilter: 'blur(10px)',
+                            background: 'var(--surface-hover)',
+                            border: '1px solid var(--border)',
+                            borderRadius: 4, padding: '6px 14px',
+                            fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)',
                         }}>
-                            <span style={{ color: '#C8A84B' }}>{b.icon}</span>
+                            <span style={{ color: 'var(--accent-blue)' }}>{b.icon}</span>
                             {b.label}
                         </div>
                     ))}
@@ -201,18 +172,16 @@ export default function HeroSection() {
                         { value: '99.4%', label: 'AI Accuracy' },
                         { value: '24/7', label: 'Autonomous Ops' },
                     ].map((stat) => (
-                        <div key={stat.value} className="glass" style={{
-                            padding: '16px 28px', borderRadius: 12, textAlign: 'center', minWidth: 120,
-                            backdropFilter: 'blur(20px)',
-                            background: 'rgba(200,168,75,0.05)',
-                            border: '1px solid rgba(200,168,75,0.15)',
+                        <div key={stat.value} style={{
+                            padding: '16px 28px', borderRadius: 4, textAlign: 'center', minWidth: 120,
+                            background: 'var(--surface)',
+                            border: '1px solid var(--border)',
                         }}>
                             <div style={{
-                                fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.5rem',
-                                background: 'linear-gradient(135deg, #E8C96A, #C8A84B)',
-                                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                                fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1.5rem',
+                                color: 'var(--accent-blue)'
                             }}>{stat.value}</div>
-                            <div style={{ fontSize: '0.78rem', color: '#8892A4', marginTop: 4 }}>{stat.label}</div>
+                            <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 4 }}>{stat.label}</div>
                         </div>
                     ))}
                 </motion.div>
@@ -224,11 +193,11 @@ export default function HeroSection() {
                 transition={{ duration: 2, repeat: Infinity }}
                 style={{
                     position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)',
-                    color: '#4A5568', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
+                    color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
                     zIndex: 4,
                 }}
             >
-                <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Scroll</span>
+                <span style={{ fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>Scroll</span>
                 <ChevronDown size={16} />
             </motion.div>
 

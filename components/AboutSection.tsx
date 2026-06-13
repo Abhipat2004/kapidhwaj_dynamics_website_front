@@ -32,17 +32,17 @@ export default function AboutSection() {
                             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
                         >
                             <div className="section-label">About KapiDhwaj Dynamics</div>
-                            <h2 className="section-title">
+                            <h2 className="section-title" style={{ color: 'var(--text-primary)' }}>
                                 We Build the Systems <br />
-                                <span className="gradient-text">That Protect What Matters</span>
+                                <span style={{ color: 'var(--accent-blue)' }}>That Protect What Matters</span>
                             </h2>
-                            <p style={{ color: '#8892A4', lineHeight: 1.8, marginBottom: 28, fontSize: '0.95rem' }}>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 28, fontSize: '0.95rem' }}>
                                 Founded in 2025, KapiDhwaj Dynamics is an emerging defence and robotics startup
                                 developing AI-powered systems at the intersection of autonomy, sensor fusion, and
                                 battlefield intelligence. Our products serve military forces, research institutions,
                                 and security-conscious enterprises across the world.
                             </p>
-                            <p style={{ color: '#8892A4', lineHeight: 1.8, marginBottom: 40, fontSize: '0.95rem' }}>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 40, fontSize: '0.95rem' }}>
                                 From AI-powered drone detection and semi-autonomous turret systems to proximity-fuzed
                                 and laser-guided smart ammunition — every product we build is engineered to keep
                                 personnel safe and give operators decisive advantage on the modern battlefield.
@@ -51,8 +51,8 @@ export default function AboutSection() {
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                                 {values.map((v) => (
                                     <div key={v} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                                        <CheckCircle2 size={18} color="#C8A84B" style={{ flexShrink: 0, marginTop: 2 }} />
-                                        <span style={{ color: '#CBD5E0', fontSize: '0.9rem', lineHeight: 1.6 }}>{v}</span>
+                                        <CheckCircle2 size={18} color="var(--accent-blue)" style={{ flexShrink: 0, marginTop: 2 }} />
+                                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6, fontWeight: 500 }}>{v}</span>
                                     </div>
                                 ))}
                             </div>
@@ -67,27 +67,26 @@ export default function AboutSection() {
                         style={{ position: 'relative' }}
                     >
                         <div style={{
-                            background: 'linear-gradient(135deg, rgba(200,168,75,0.08), rgba(139,105,20,0.08))',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            borderRadius: 24,
+                            background: 'var(--surface)',
+                            border: '1px solid var(--border)',
+                            borderRadius: 4,
                             padding: '48px 40px',
                             textAlign: 'center',
                             position: 'relative',
                             overflow: 'hidden',
                         }}>
-                            <div style={{ position: 'absolute', width: 200, height: 200, borderRadius: '50%', border: '1px solid rgba(200,168,75,0.12)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
-                            <div style={{ position: 'absolute', width: 320, height: 320, borderRadius: '50%', border: '1px solid rgba(139,105,20,0.08)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
+                            <div style={{ position: 'absolute', width: 200, height: 200, borderRadius: '50%', border: '1px solid var(--border)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
+                            <div style={{ position: 'absolute', width: 320, height: 320, borderRadius: '50%', border: '1px solid var(--border)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
 
                             <div style={{ position: 'relative', zIndex: 1 }}>
                                 <div style={{
-                                    fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '5rem',
-                                    background: 'linear-gradient(135deg, #C8A84B, #8B6914)',
-                                    WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                                    fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '5rem',
+                                    color: 'var(--accent-navy)',
                                     lineHeight: 1, marginBottom: 12,
                                 }}>
                                     2025
                                 </div>
-                                <p style={{ color: '#8892A4', fontSize: '0.9rem', marginBottom: 40 }}>Founded</p>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: 40, fontWeight: 600 }}>Founded</p>
 
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
                                     {[
@@ -96,9 +95,9 @@ export default function AboutSection() {
                                         { n: 'Labs', label: 'Research Partners' },
                                         { n: '24/7', label: 'Operational' },
                                     ].map(item => (
-                                        <div key={item.label} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, padding: '16px 12px' }}>
-                                            <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.3rem', color: '#F0F4FF' }}>{item.n}</div>
-                                            <div style={{ fontSize: '0.75rem', color: '#8892A4', marginTop: 4 }}>{item.label}</div>
+                                        <div key={item.label} style={{ background: 'var(--surface-hover)', border: '1px solid var(--border)', borderRadius: 4, padding: '16px 12px' }}>
+                                            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.3rem', color: 'var(--text-primary)' }}>{item.n}</div>
+                                            <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: 4, fontWeight: 500 }}>{item.label}</div>
                                         </div>
                                     ))}
                                 </div>
@@ -106,16 +105,19 @@ export default function AboutSection() {
                         </div>
 
                         <motion.div
-                            animate={{ y: [0, -10, 0] }}
+                            animate={{ y: [0, -6, 0] }}
                             transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                             style={{
                                 position: 'absolute', bottom: -20, left: -20,
-                                background: 'rgba(200,168,75,0.1)', border: '1px solid rgba(200,168,75,0.25)',
-                                backdropFilter: 'blur(16px)', borderRadius: 14, padding: '14px 20px',
+                                background: 'var(--surface)', border: '1px solid var(--border)',
+                                borderRadius: 4, padding: '14px 20px',
+                                boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
                             }}
                         >
-                            <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#C8A84B' }}>🛡️ Defence Grade</div>
-                            <div style={{ fontSize: '0.72rem', color: '#8892A4', marginTop: 2 }}>Field-tested & validated</div>
+                            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--accent-blue)', display: 'flex', gap: 6 }}>
+                                <span>🛡️</span> Defence Grade
+                            </div>
+                            <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginTop: 2, fontWeight: 500 }}>Field-tested & validated</div>
                         </motion.div>
                     </motion.div>
                 </div>

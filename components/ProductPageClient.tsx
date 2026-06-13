@@ -18,25 +18,6 @@ export default function ProductPageClient({ product }: { product: Product }) {
                 overflow: 'hidden',
                 borderBottom: '1px solid rgba(255,255,255,0.06)',
             }}>
-                {/* Background glow */}
-                <div style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: `radial-gradient(ellipse 70% 100% at 60% 0%, ${color}10, transparent 70%)`,
-                    pointerEvents: 'none',
-                }} />
-                {/* Grid */}
-                <div style={{
-                    position: 'absolute',
-                    inset: 0,
-                    backgroundImage: `
-            linear-gradient(${color}06 1px, transparent 1px),
-            linear-gradient(90deg, ${color}06 1px, transparent 1px)
-          `,
-                    backgroundSize: '50px 50px',
-                    maskImage: 'radial-gradient(ellipse 80% 100% at 50% 0%, black 30%, transparent 100%)',
-                    WebkitMaskImage: 'radial-gradient(ellipse 80% 100% at 50% 0%, black 30%, transparent 100%)',
-                }} />
 
                 <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                     {/* Back link */}
@@ -44,14 +25,15 @@ export default function ProductPageClient({ product }: { product: Product }) {
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: 8,
-                        color: '#8892A4',
+                        color: 'var(--text-secondary)',
                         fontSize: '0.88rem',
-                        fontWeight: 500,
+                        fontWeight: 600,
                         marginBottom: 40,
                         transition: 'color 0.2s',
+                        textDecoration: 'none',
                     }}
-                        onMouseEnter={e => (e.currentTarget.style.color = color)}
-                        onMouseLeave={e => (e.currentTarget.style.color = '#8892A4')}
+                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-navy)')}
+                        onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
                     >
                         <ArrowLeft size={16} />
                         Back to Products
@@ -70,10 +52,10 @@ export default function ProductPageClient({ product }: { product: Product }) {
                                     display: 'inline-block',
                                     fontSize: '0.72rem',
                                     fontWeight: 700,
-                                    background: `${color}18`,
-                                    color,
-                                    border: `1px solid ${color}30`,
-                                    borderRadius: 50,
+                                    background: 'var(--surface-hover)',
+                                    color: 'var(--accent-blue)',
+                                    border: `1px solid var(--border)`,
+                                    borderRadius: 4,
                                     padding: '5px 14px',
                                     letterSpacing: '0.1em',
                                     textTransform: 'uppercase',
@@ -88,10 +70,10 @@ export default function ProductPageClient({ product }: { product: Product }) {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.55, delay: 0.05 }}
                                 style={{
-                                    fontFamily: 'Outfit, sans-serif',
-                                    fontWeight: 900,
+                                    fontFamily: 'Inter, sans-serif',
+                                    fontWeight: 800,
                                     fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                                    color: '#F0F4FF',
+                                    color: 'var(--text-primary)',
                                     lineHeight: 1.1,
                                     marginBottom: 12,
                                 }}
@@ -106,7 +88,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
                                 style={{
                                     fontSize: '1.05rem',
                                     fontWeight: 600,
-                                    color,
+                                    color: 'var(--accent-blue)',
                                     marginBottom: 16,
                                     letterSpacing: '0.02em',
                                 }}
@@ -119,7 +101,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.55, delay: 0.15 }}
                                 style={{
-                                    color: '#8892A4',
+                                    color: 'var(--text-secondary)',
                                     fontSize: '1rem',
                                     lineHeight: 1.8,
                                     maxWidth: 640,
@@ -150,16 +132,16 @@ export default function ProductPageClient({ product }: { product: Product }) {
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
                             <h2 style={{
-                                fontFamily: 'Outfit, sans-serif',
+                                fontFamily: 'Inter, sans-serif',
                                 fontWeight: 800,
                                 fontSize: '1.6rem',
-                                color: '#F0F4FF',
+                                color: 'var(--text-primary)',
                                 marginBottom: 32,
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: 10,
                             }}>
-                                <Zap size={22} color={color} />
+                                <Zap size={22} color="var(--accent-blue)" />
                                 Key Capabilities
                             </h2>
 
@@ -171,32 +153,24 @@ export default function ProductPageClient({ product }: { product: Product }) {
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: 0.25 + i * 0.08 }}
                                         style={{
-                                            background: `${color}08`,
-                                            border: `1px solid ${color}20`,
-                                            borderRadius: 16,
+                                            background: 'var(--surface)',
+                                            border: `1px solid var(--border)`,
+                                            borderRadius: 4,
                                             padding: '24px 22px',
                                             position: 'relative',
                                             overflow: 'hidden',
                                         }}
                                     >
-                                        {/* Top accent */}
-                                        <div style={{
-                                            position: 'absolute',
-                                            top: 0, left: 0, right: 0,
-                                            height: 2,
-                                            background: `linear-gradient(90deg, ${color}, transparent)`,
-                                            borderRadius: '16px 16px 0 0',
-                                        }} />
                                         <h3 style={{
-                                            fontFamily: 'Outfit, sans-serif',
+                                            fontFamily: 'Inter, sans-serif',
                                             fontWeight: 700,
                                             fontSize: '1rem',
-                                            color: '#F0F4FF',
+                                            color: 'var(--text-primary)',
                                             marginBottom: 10,
                                         }}>
                                             {f.title}
                                         </h3>
-                                        <p style={{ color: '#8892A4', fontSize: '0.86rem', lineHeight: 1.7 }}>
+                                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.7 }}>
                                             {f.description}
                                         </p>
                                     </motion.div>
@@ -211,10 +185,10 @@ export default function ProductPageClient({ product }: { product: Product }) {
                             transition={{ duration: 0.6, delay: 0.4 }}
                         >
                             <h2 style={{
-                                fontFamily: 'Outfit, sans-serif',
+                                fontFamily: 'Inter, sans-serif',
                                 fontWeight: 800,
                                 fontSize: '1.6rem',
-                                color: '#F0F4FF',
+                                color: 'var(--text-primary)',
                                 marginBottom: 24,
                             }}>
                                 Use Cases
@@ -222,8 +196,8 @@ export default function ProductPageClient({ product }: { product: Product }) {
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                                 {product.useCases.map(uc => (
                                     <div key={uc} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                                        <CheckCircle2 size={18} color={color} style={{ flexShrink: 0 }} />
-                                        <span style={{ color: '#CBD5E0', fontSize: '0.95rem' }}>{uc}</span>
+                                        <CheckCircle2 size={18} color="var(--accent-blue)" style={{ flexShrink: 0 }} />
+                                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', fontWeight: 500 }}>{uc}</span>
                                     </div>
                                 ))}
                             </div>
@@ -238,22 +212,22 @@ export default function ProductPageClient({ product }: { product: Product }) {
                     >
                         {/* Specs */}
                         <div style={{
-                            background: `${color}08`,
-                            border: `1px solid ${color}25`,
-                            borderRadius: 20,
+                            background: 'var(--surface)',
+                            border: `1px solid var(--border)`,
+                            borderRadius: 4,
                             padding: '28px 24px',
                             marginBottom: 20,
                             position: 'sticky',
                             top: 100,
                         }}>
                             <h3 style={{
-                                fontFamily: 'Outfit, sans-serif',
+                                fontFamily: 'Inter, sans-serif',
                                 fontWeight: 800,
                                 fontSize: '1.1rem',
-                                color: '#F0F4FF',
+                                color: 'var(--text-primary)',
                                 marginBottom: 20,
                                 paddingBottom: 16,
-                                borderBottom: `1px solid ${color}20`,
+                                borderBottom: `1px solid var(--border)`,
                             }}>
                                 Technical Specifications
                             </h3>
@@ -264,10 +238,10 @@ export default function ProductPageClient({ product }: { product: Product }) {
                                         justifyContent: 'space-between',
                                         alignItems: 'center',
                                         padding: '12px 0',
-                                        borderBottom: i < product.specs.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                                        borderBottom: i < product.specs.length - 1 ? '1px solid var(--border)' : 'none',
                                     }}>
-                                        <span style={{ color: '#8892A4', fontSize: '0.85rem' }}>{spec.label}</span>
-                                        <span style={{ color: '#F0F4FF', fontWeight: 600, fontSize: '0.85rem', textAlign: 'right', maxWidth: 140 }}>{spec.value}</span>
+                                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{spec.label}</span>
+                                        <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.85rem', textAlign: 'right', maxWidth: 140 }}>{spec.value}</span>
                                     </div>
                                 ))}
                             </div>
@@ -275,21 +249,21 @@ export default function ProductPageClient({ product }: { product: Product }) {
 
                         {/* Status */}
                         <div style={{
-                            background: 'rgba(200,168,75,0.06)',
-                            border: '1px solid rgba(200,168,75,0.2)',
-                            borderRadius: 14,
+                            background: 'var(--surface-hover)',
+                            border: '1px solid var(--border)',
+                            borderRadius: 4,
                             padding: '14px 18px',
                             display: 'flex',
                             alignItems: 'center',
                             gap: 10,
                             marginBottom: 16,
                         }}>
-                            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#C8A84B', boxShadow: '0 0 8px #C8A84B', display: 'inline-block', flexShrink: 0 }} />
-                            <span style={{ color: '#C8A84B', fontWeight: 600, fontSize: '0.85rem' }}>{product.status}</span>
+                            <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent-blue)', display: 'inline-block', flexShrink: 0 }} />
+                            <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.85rem' }}>{product.status}</span>
                         </div>
 
                         {/* CTA */}
-                        <a href={`mailto:kapidhwajdynamics@gmail.com?subject=Demo%20Request%20%E2%80%94%20${encodeURIComponent(product.name)}&body=Hello%20KapiDhwaj%20Dynamics%20Team%2C%0A%0AI%20would%20like%20to%20request%20a%20live%20demonstration%20of%20${encodeURIComponent(product.name)}.%0A%0AOrganisation%3A%20%0ACountry%3A%20%0A%0AThank%20you.`} className="btn-primary" style={{ display: 'flex', justifyContent: 'center', borderRadius: 14 }}>
+                        <a href={`mailto:kapidhwajdynamics@gmail.com?subject=Demo%20Request%20%E2%80%94%20${encodeURIComponent(product.name)}&body=Hello%20KapiDhwaj%20Dynamics%20Team%2C%0A%0AI%20would%20like%20to%20request%20a%20live%20demonstration%20of%20${encodeURIComponent(product.name)}.%0A%0AOrganisation%3A%20%0ACountry%3A%20%0A%0AThank%20you.`} className="btn-primary" style={{ display: 'flex', justifyContent: 'center' }}>
                             <span>Request a Demo</span>
                         </a>
                         <Link href="/#products" style={{
@@ -299,15 +273,22 @@ export default function ProductPageClient({ product }: { product: Product }) {
                             gap: 6,
                             marginTop: 12,
                             padding: '12px',
-                            color: '#8892A4',
+                            color: 'var(--text-secondary)',
                             fontSize: '0.85rem',
-                            fontWeight: 500,
-                            transition: 'color 0.2s',
-                            borderRadius: 14,
-                            border: '1px solid rgba(255,255,255,0.07)',
+                            fontWeight: 600,
+                            transition: 'all 0.2s',
+                            borderRadius: 4,
+                            border: '1px solid var(--border)',
+                            textDecoration: 'none',
                         }}
-                            onMouseEnter={e => (e.currentTarget.style.color = '#F0F4FF')}
-                            onMouseLeave={e => (e.currentTarget.style.color = '#8892A4')}
+                            onMouseEnter={e => {
+                                (e.currentTarget as HTMLElement).style.color = 'var(--accent-navy)';
+                                (e.currentTarget as HTMLElement).style.background = 'var(--surface-hover)';
+                            }}
+                            onMouseLeave={e => {
+                                (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)';
+                                (e.currentTarget as HTMLElement).style.background = 'transparent';
+                            }}
                         >
                             <ArrowLeft size={14} />
                             All Products

@@ -1,24 +1,45 @@
 'use client';
 
 import Image from 'next/image';
-import { Twitter, Linkedin, Github } from 'lucide-react';
+import Link from 'next/link';
+import { Twitter, Linkedin, Instagram } from 'lucide-react';
 
 const footerLinks = {
-    Products: ['KD Sentinel', 'KD Eagle Eye', 'KD Prox-50', 'KD Viper'],
-    Solutions: ['Military & Defence', 'Forward Operating Bases', 'Airfield Security', 'Naval Defence'],
-    Technology: ['Sensor Fusion', 'Edge AI', 'Laser Guidance', 'Developer API'],
-    Company: ['About Us', 'Careers', 'Press', 'Contact'],
+    Products: [
+        { label: 'KD Sentinel', href: '/products/kd-sentinel' },
+        { label: 'KD Eagle Eye', href: '/products/kd-eagle-eye' },
+        { label: 'KD Prox-50', href: '/products/kd-prox50' },
+        { label: 'KD Viper', href: '/products/kd-viper' },
+    ],
+    Solutions: [
+        { label: 'Military & Defence', href: '/#products' },
+        { label: 'Forward Operating Bases', href: '/#products' },
+        { label: 'Airfield Security', href: '/#products' },
+        { label: 'Naval Defence', href: '/#products' },
+    ],
+    Technology: [
+        { label: 'Sensor Fusion', href: '/#technology' },
+        { label: 'Edge AI', href: '/#technology' },
+        { label: 'Laser Guidance', href: '/#technology' },
+        { label: 'Developer API', href: '/#contact' },
+    ],
+    Company: [
+        { label: 'About Us', href: '/#about' },
+        { label: 'Careers', href: 'mailto:kapidhwajdynamics@gmail.com?subject=Careers' },
+        { label: 'Press', href: 'mailto:kapidhwajdynamics@gmail.com?subject=Press%20Enquiry' },
+        { label: 'Contact', href: '/#contact' },
+    ],
 };
 
 const socials = [
-    { icon: <Twitter size={18} />, href: '#', label: 'Twitter' },
-    { icon: <Linkedin size={18} />, href: '#', label: 'LinkedIn' },
-    { icon: <Github size={18} />, href: '#', label: 'GitHub' },
+    { icon: <Twitter size={18} />, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: <Linkedin size={18} />, href: 'https://www.linkedin.com/company/kapidhwaj-dynamics/', label: 'LinkedIn' },
+    { icon: <Instagram size={18} />, href: 'https://www.instagram.com/kapidhwajdynamics?igsh=MWxzc3JvN2Z0bmJzNA==', label: 'Instagram' },
 ];
 
 export default function Footer() {
     return (
-        <footer style={{ background: '#03040a', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '64px 0 32px', position: 'relative', zIndex: 1 }}>
+        <footer style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--border)', padding: '64px 0 32px', position: 'relative', zIndex: 1 }}>
             <div className="container">
                 <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 56 }} className="footer-grid">
 
@@ -30,32 +51,32 @@ export default function Footer() {
                                 alt="KapiDhwaj Dynamics"
                                 width={42}
                                 height={42}
-                                style={{ objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(200,168,75,0.5))' }}
+                                style={{ objectFit: 'contain' }}
                             />
-                            <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.1rem', color: '#F0F4FF' }}>
-                                KapiDhwaj<span style={{ color: '#C8A84B' }}> Dynamics</span>
+                            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.1rem', color: 'var(--text-primary)' }}>
+                                KapiDhwaj Dynamics
                             </span>
                         </div>
-                        <p style={{ color: '#8892A4', fontSize: '0.88rem', lineHeight: 1.75, maxWidth: 260, marginBottom: 24 }}>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.75, maxWidth: 260, marginBottom: 24 }}>
                             Building next-generation defence technology — AI-powered drone detection, semi-autonomous turret systems, and precision smart ammunition for military operations.
                         </p>
                         <div style={{ display: 'flex', gap: 12 }}>
                             {socials.map(s => (
                                 <a key={s.label} href={s.href} aria-label={s.label} style={{
-                                    width: 38, height: 38, borderRadius: 10,
-                                    background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
+                                    width: 38, height: 38, borderRadius: 6,
+                                    background: 'var(--surface)', border: '1px solid var(--border)',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    color: '#8892A4', transition: 'all 0.2s',
+                                    color: 'var(--text-muted)', transition: 'all 0.2s',
                                 }}
                                     onMouseEnter={e => {
-                                        (e.currentTarget as HTMLElement).style.background = 'rgba(200,168,75,0.1)';
-                                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(200,168,75,0.25)';
-                                        (e.currentTarget as HTMLElement).style.color = '#C8A84B';
+                                        (e.currentTarget as HTMLElement).style.background = 'var(--surface-hover)';
+                                        (e.currentTarget as HTMLElement).style.borderColor = 'var(--accent-blue)';
+                                        (e.currentTarget as HTMLElement).style.color = 'var(--accent-blue)';
                                     }}
                                     onMouseLeave={e => {
-                                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)';
-                                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
-                                        (e.currentTarget as HTMLElement).style.color = '#8892A4';
+                                        (e.currentTarget as HTMLElement).style.background = 'var(--surface)';
+                                        (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)';
+                                        (e.currentTarget as HTMLElement).style.color = 'var(--text-muted)';
                                     }}
                                 >
                                     {s.icon}
@@ -68,20 +89,20 @@ export default function Footer() {
                     {Object.entries(footerLinks).map(([category, links]) => (
                         <div key={category}>
                             <h4 style={{
-                                fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: '0.85rem',
-                                color: '#F0F4FF', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 16,
+                                fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '0.85rem',
+                                color: 'var(--text-primary)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 16,
                             }}>
                                 {category}
                             </h4>
                             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
                                 {links.map(link => (
-                                    <li key={link}>
-                                        <a href="#" style={{ color: '#8892A4', fontSize: '0.88rem', transition: 'color 0.2s' }}
-                                            onMouseEnter={e => (e.currentTarget.style.color = '#F0F4FF')}
-                                            onMouseLeave={e => (e.currentTarget.style.color = '#8892A4')}
+                                    <li key={link.label}>
+                                        <Link href={link.href} style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', transition: 'color 0.2s', textDecoration: 'none' }}
+                                            onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                                            onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
                                         >
-                                            {link}
-                                        </a>
+                                            {link.label}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -91,13 +112,13 @@ export default function Footer() {
 
                 {/* Bottom bar */}
                 <div style={{
-                    borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 28,
+                    borderTop: '1px solid var(--border)', paddingTop: 28,
                     display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12,
                 }}>
-                    <span style={{ color: '#4A5568', fontSize: '0.82rem' }}>© 2026 KapiDhwaj Dynamics. All rights reserved.</span>
-                    <a href="mailto:kapidhwajdynamics@gmail.com" style={{ color: '#4A5568', fontSize: '0.82rem', textDecoration: 'none', transition: 'color 0.2s' }}
-                        onMouseEnter={e => (e.currentTarget.style.color = '#C8A84B')}
-                        onMouseLeave={e => (e.currentTarget.style.color = '#4A5568')}
+                    <span style={{ color: 'var(--text-muted)', fontSize: '0.82rem' }}>© 2026 KapiDhwaj Dynamics. All rights reserved.</span>
+                    <a href="mailto:kapidhwajdynamics@gmail.com" style={{ color: 'var(--text-muted)', fontSize: '0.82rem', textDecoration: 'none', transition: 'color 0.2s' }}
+                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                        onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
                     >
                         kapidhwajdynamics@gmail.com
                     </a>
