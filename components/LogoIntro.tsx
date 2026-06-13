@@ -39,7 +39,7 @@ export default function LogoIntro() {
                             position: 'fixed',
                             inset: 0,
                             zIndex: 9998,
-                            background: '#E2E8F0', // lighter slate color for visibility
+                            background: 'var(--bg)',
                             pointerEvents: 'all',
                         }}
                     />
@@ -96,7 +96,7 @@ export default function LogoIntro() {
                             style={{
                                 width: 200,
                                 height: 2,
-                                background: 'linear-gradient(90deg, transparent, #C8A84B, transparent)',
+                                background: 'linear-gradient(90deg, transparent, var(--accent-blue), transparent)',
                                 borderRadius: 2,
                                 transformOrigin: 'center',
                                 marginTop: -8,
@@ -119,7 +119,7 @@ export default function LogoIntro() {
                                         width: 6,
                                         height: 6,
                                         borderRadius: '50%',
-                                        background: '#C8A84B',
+                                        background: 'var(--accent-blue)',
                                     }}
                                 />
                             ))}

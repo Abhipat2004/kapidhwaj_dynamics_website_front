@@ -36,9 +36,9 @@ export default function Navbar() {
                     zIndex: 1000,
                     padding: '0 24px',
                     transition: 'all 0.3s ease',
-                    background: scrolled ? 'rgba(3, 4, 10, 0.85)' : 'transparent',
+                    background: scrolled ? 'rgba(255, 255, 255, 0.85)' : 'transparent',
                     backdropFilter: scrolled ? 'blur(20px)' : 'none',
-                    borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+                    borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
                 }}
             >
                 <div style={{
@@ -56,11 +56,11 @@ export default function Navbar() {
                             alt="KapiDhwaj Dynamics"
                             width={64}
                             height={64}
-                            style={{ objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(200,168,75,0.5))' }}
+                            style={{ objectFit: 'contain' }}
                             priority
                         />
-                        <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: '1.25rem', color: '#F0F4FF', letterSpacing: '-0.01em' }}>
-                            KapiDhwaj<span style={{ color: '#C8A84B' }}> Dynamics</span>
+                        <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.25rem', color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
+                            KapiDhwaj<span style={{ color: 'var(--accent-navy)' }}> Dynamics</span>
                         </span>
                     </a>
 
@@ -73,12 +73,13 @@ export default function Navbar() {
                                 style={{
                                     fontFamily: 'Inter, sans-serif',
                                     fontSize: '0.9rem',
-                                    fontWeight: 500,
-                                    color: '#8892A4',
+                                    fontWeight: 600,
+                                    color: 'var(--text-secondary)',
                                     transition: 'color 0.2s',
+                                    textDecoration: 'none'
                                 }}
-                                onMouseEnter={e => (e.currentTarget.style.color = '#F0F4FF')}
-                                onMouseLeave={e => (e.currentTarget.style.color = '#8892A4')}
+                                onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
                             >
                                 {link.label}
                             </a>
@@ -91,7 +92,7 @@ export default function Navbar() {
                     {/* Hamburger */}
                     <button
                         onClick={() => setMenuOpen(!menuOpen)}
-                        style={{ color: '#F0F4FF', display: 'none' }}
+                        style={{ color: 'var(--text-primary)', display: 'none', background: 'none', border: 'none', cursor: 'pointer' }}
                         className="hamburger"
                         aria-label="Toggle menu"
                     >
@@ -114,13 +115,14 @@ export default function Navbar() {
                             right: 0,
                             bottom: 0,
                             width: 280,
-                            background: '#070b14',
-                            borderLeft: '1px solid rgba(255,255,255,0.08)',
+                            background: 'var(--bg)',
+                            borderLeft: '1px solid var(--border)',
                             zIndex: 999,
                             padding: '100px 32px 40px',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: 32,
+                            boxShadow: '-4px 0 24px rgba(0,0,0,0.05)',
                         }}
                     >
                         {navLinks.map(link => (
@@ -129,10 +131,11 @@ export default function Navbar() {
                                 href={link.href}
                                 onClick={() => setMenuOpen(false)}
                                 style={{
-                                    fontFamily: 'Outfit, sans-serif',
-                                    fontWeight: 600,
+                                    fontFamily: 'Inter, sans-serif',
+                                    fontWeight: 700,
                                     fontSize: '1.2rem',
-                                    color: '#F0F4FF',
+                                    color: 'var(--text-primary)',
+                                    textDecoration: 'none',
                                 }}
                             >
                                 {link.label}

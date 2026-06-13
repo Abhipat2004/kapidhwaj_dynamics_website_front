@@ -52,7 +52,7 @@ export default function TechSection() {
                     <div className="section-label">Core Technology</div>
                     <h2 className="section-title" style={{ maxWidth: 580, color: 'var(--text-primary)' }}>
                         One Platform,{' '}
-                        <span className="gradient-text">Infinite Mission Profiles</span>
+                        <span style={{ color: 'var(--accent-blue)' }}>Infinite Mission Profiles</span>
                     </h2>
                     <p className="section-subtitle" style={{ color: 'var(--text-secondary)' }}>
                         Every KapiDhwaj Dynamics product is built on the same battle-tested technology stack —
@@ -89,12 +89,7 @@ export default function TechSection() {
                                 (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)';
                             }}
                         >
-                            <div style={{
-                                position: 'absolute',
-                                top: 0, left: 0, right: 0, height: 3,
-                                background: `linear-gradient(90deg, ${pillar.color}, transparent)`,
-                                borderRadius: '20px 20px 0 0',
-                            }} />
+
                             <div style={{
                                 width: 60, height: 60, borderRadius: 4,
                                 background: 'var(--surface-hover)', border: '1px solid var(--border)',

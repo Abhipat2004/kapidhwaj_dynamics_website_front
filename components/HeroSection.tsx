@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronDown, Shield, Cpu, Radio } from 'lucide-react';
 import Image from 'next/image';
 
-const HeroScene3D = dynamic(() => import('./HeroScene3D'), { ssr: false });
 
 const fadeUp = (delay = 0) => ({
     hidden: { opacity: 0, y: 40 },

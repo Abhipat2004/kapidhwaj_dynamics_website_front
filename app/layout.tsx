@@ -5,7 +5,6 @@ import Footer from '@/components/Footer';
 import LogoIntro from '@/components/LogoIntro';
 import GlobalBackground from '@/components/GlobalBackground';
 
-import CursorSparkle from '@/components/CursorSparkle';
 
 export const metadata: Metadata = {
   title: 'KapiDhwaj Dynamics — Next-Gen Drone Detection Systems',
@@ -22,7 +21,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <GlobalBackground />
-        <CursorSparkle />
         <LogoIntro />
         <Navbar />
         <main style={{ position: 'relative', zIndex: 1 }}>{children}</main>
