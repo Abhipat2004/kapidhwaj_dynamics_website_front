@@ -47,7 +47,7 @@ export default function Footer() {
     return (
         <footer style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--border)', padding: '64px 0 32px', position: 'relative', zIndex: 1 }}>
             <div className="container">
-                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr 1fr', gap: 30, marginBottom: 56 }} className="footer-grid">
+                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr auto', gap: 30, marginBottom: 56 }} className="footer-grid">
 
                     {/* Brand */}
                     <div>
@@ -97,13 +97,14 @@ export default function Footer() {
                             <h4 style={{
                                 fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '0.85rem',
                                 color: 'var(--text-primary)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 16,
+                                whiteSpace: 'nowrap'
                             }}>
                                 {category}
                             </h4>
                             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
                                 {links.map(link => (
                                     <li key={link.label}>
-                                        <Link href={link.href} style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', transition: 'color 0.2s', textDecoration: 'none' }}
+                                        <Link href={link.href} style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', transition: 'color 0.2s', textDecoration: 'none', whiteSpace: 'nowrap' }}
                                             onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-blue)')}
                                             onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
                                         >
