@@ -133,8 +133,9 @@ export default function Footer() {
             </div>
 
             <style>{`
-        @media (max-width: 1100px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr !important; } }
-        @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 1200px) { .footer-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 48px 24px !important; } }
+        @media (max-width: 800px) { .footer-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 48px 24px !important; } }
+        @media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr !important; gap: 40px !important; } }
       `}</style>
         </footer>
     );
