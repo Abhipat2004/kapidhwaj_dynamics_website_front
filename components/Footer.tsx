@@ -29,6 +29,12 @@ const footerLinks = {
         { label: 'Press', href: 'mailto:kapidhwajdynamics@gmail.com?subject=Press%20Enquiry' },
         { label: 'Contact', href: '/#contact' },
     ],
+    'Meet Our Founders': [
+        { label: 'Abhineet Pathak', href: '#' },
+        { label: 'Krishiv Bohra', href: '#' },
+        { label: 'Paavan Parmar', href: '#' },
+        { label: 'Siddhant Bhattacharjee', href: '#' },
+    ],
 };
 
 const socials = [
@@ -41,7 +47,7 @@ export default function Footer() {
     return (
         <footer style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--border)', padding: '64px 0 32px', position: 'relative', zIndex: 1 }}>
             <div className="container">
-                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 56 }} className="footer-grid">
+                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr 1fr', gap: 30, marginBottom: 56 }} className="footer-grid">
 
                     {/* Brand */}
                     <div>
@@ -126,7 +132,7 @@ export default function Footer() {
             </div>
 
             <style>{`
-        @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media (max-width: 1100px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr !important; } }
         @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr !important; } }
       `}</style>
         </footer>

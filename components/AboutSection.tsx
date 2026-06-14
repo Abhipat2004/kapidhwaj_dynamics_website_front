@@ -115,9 +115,9 @@ export default function AboutSection() {
                             }}
                         >
                             <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--accent-blue)', display: 'flex', gap: 6 }}>
-                                <span>🛡️</span> Defence Grade
+                                Defence Grade
                             </div>
-                            <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginTop: 2, fontWeight: 500 }}>Field-tested & validated</div>
+                            <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginTop: 2, fontWeight: 500 }}>Under testing</div>
                         </motion.div>
                     </motion.div>
                 </div>
